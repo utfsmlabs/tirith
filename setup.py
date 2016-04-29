@@ -39,7 +39,8 @@ setup(
     install_requires=['websockets'],
     entry_points={
         'console_scripts': [
-            'tirith-server=tirith-server:main',
+            'tirs=tirith.server:main',
+            'tirc=tirith.client:main',
         ],
     },
 )

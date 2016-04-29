@@ -14,11 +14,13 @@ async def handler(websocket, path):
             break
     print(','.join(clients))
 
-def main():    
+def main(args=None):
+    if args is None:
+        args = sys.argv[1:]
     start_server = websockets.serve(handler, 'localhost', 6969)
 
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()
     
-if __name__ == __main__:
+if __name__ == "__main__":
     main()
