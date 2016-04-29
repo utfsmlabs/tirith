@@ -13,8 +13,12 @@ async def handler(websocket, path):
             clients.remove(websocket.remote_address[0])
             break
     print(','.join(clients))
-    
-start_server = websockets.serve(handler, 'localhost', 6969)
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+def main():    
+    start_server = websockets.serve(handler, 'localhost', 6969)
+
+    asyncio.get_event_loop().run_until_complete(start_server)
+    asyncio.get_event_loop().run_forever()
+    
+if __name__ == __main__:
+    main()
