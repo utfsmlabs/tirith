@@ -11,6 +11,7 @@ async def handler():
 
         greeting = await websocket.recv()
         print("< {}".format(greeting))
+        # todo: manage server disconnections
 
 
 def main(args=None):
