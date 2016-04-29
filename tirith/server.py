@@ -23,5 +23,7 @@ def main(args=None):
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()
     
+    print("tirith server is listening...")
+    
 if __name__ == "__main__":
     main()
