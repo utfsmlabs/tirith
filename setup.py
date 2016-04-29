@@ -8,11 +8,11 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='tirith-server',
+    name='tirith',
     version='0.1.0-dev0',
     description='Monitoring software',
     long_description=long_description,
-    url='https://github.com/utfsmlabs/tirith-server',
+    url='https://github.com/utfsmlabs/tirith',
     author='René Mujica Moreau',
     author_email='rene.mujica.m@gmail.com',
     license='MIT',
