@@ -36,7 +36,7 @@ setup(
     ],
     keywords='monitoring',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    install_requires=['websockets'],
+    install_requires=['websockets', 'Flask'],
     entry_points={
         'console_scripts': [
             'tirs=tirith.server:main',
