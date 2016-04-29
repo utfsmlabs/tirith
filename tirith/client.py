@@ -15,10 +15,10 @@ async def handler():
 
 def main():
     if args is None:
-        args = sys.argv[1:]
-    asyncio.get_event_loop().run_until_complete(handler())
-    
+        args = sys.argv[1:]    
     print("tirith client 0.1.0-dev0")
+    asyncio.get_event_loop().run_until_complete(handler())
 
-if name == "__main__":
+
+if __name__ == "__main__":
     main()

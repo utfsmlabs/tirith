@@ -15,15 +15,16 @@ async def handler(websocket, path):
             break
     print(','.join(clients))
 
+
 def main(args=None):
     if args is None:
         args = sys.argv[1:]
+
+    print("tirith server is listening...")
     start_server = websockets.serve(handler, 'localhost', 6969)
 
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()
-    
-    print("tirith server is listening...")
-    
+
 if __name__ == "__main__":
     main()
