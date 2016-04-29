@@ -13,7 +13,7 @@ async def handler():
         print("< {}".format(greeting))
 
 
-def main():
+def main(args=None):
     if args is None:
         args = sys.argv[1:]    
     print("tirith client 0.1.0-dev0")
