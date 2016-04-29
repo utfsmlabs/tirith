@@ -12,7 +12,7 @@ setup(
     version='0.1.0-dev0',
     description='Monitoring software',
     long_description=long_description,
-    url='https://github.com/utfsmlabs/tirith-server',,
+    url='https://github.com/utfsmlabs/tirith-server',
     author='René Mujica Moreau',
     author_email='rene.mujica.m@gmail.com',
     license='MIT',
