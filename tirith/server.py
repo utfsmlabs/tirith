@@ -1,30 +1,30 @@
 import sys
-import asyncio
-import websockets
+from flask import Flask, jsonify
+from flask_socketio import SocketIO, emit
 
 clients = set()
-async def handler(websocket, path):
-    while True:
-        try:
-            message = await websocket.recv()
-            clients.add(websocket.remote_address[0])
-            print(','.join(clients))
-        except websockets.exceptions.ConnectionClosed:
-            print("connection closed")
-            clients.remove(websocket.remote_address[0])
-            break
-    print(','.join(clients))
+app = Flask(__name__)
+app.config["debug"] = True
+app.config["port"] = 6969
+socketio = SocketIO(app)
 
+@app.route("/status.json")
+def status():
+    return jsonify(clients=clients)
+
+
+@socketio.on("connected")
+def connected(json):
+    print("received: " + str(json))
+    emit("status", "wena")
 
 def main(args=None):
     if args is None:
         args = sys.argv[1:]
 
-    print("tirith server is listening...")
-    start_server = websockets.serve(handler, 'localhost', 6969)
-
-    asyncio.get_event_loop().run_until_complete(start_server)
-    asyncio.get_event_loop().run_forever()
+    print("tirith server")
+    socketio.run(app)
+    
 
 if __name__ == "__main__":
     main()
