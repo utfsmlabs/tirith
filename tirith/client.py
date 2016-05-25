@@ -1,23 +1,33 @@
 import sys
-from socketIO_client import SocketIO, BaseNamespace
+import asyncio
+from autobahn.asyncio.wamp import ApplicationSession, ApplicationRunner
 
-class DefaultNamespace(BaseNamespace):
+class TestComponent(ApplicationSession):
     
-    def on_connected(self):
-        print("connected")
-    
-    def on_status(self, *args):
-        print("on_status: ", args)
+    async def onJoin(self, details):
+        print("session ready")
+        
+        def add2(x, y):
+            return x + y
+            
+        try:
+            await self.register(add2, u"tirith.add2")
+            print ("procedure registered")
+        except Exception as e:
+            print ("could not register procedure: {0}".format(e))
     
 
 def main(args=None):
     if args is None:
         args = sys.argv[1:]    
-    print("tirith client 0.1.0")
+    print("tirith client 0.2.0")
     
     print ("connecting...")
-    with SocketIO('localhost', 5000, DefaultNamespace) as socketIO:
-        socketIO.wait()
+    
+    runner = ApplicationRunner(url=u"ws://frameshift:8080/ws", realm=u"realm1")
+    # throws socket.gaierror on 404
+    runner.run(TestComponent)
+    
 
 
 if __name__ == "__main__":

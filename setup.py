@@ -9,7 +9,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='tirith',
-    version='0.1.0',
+    version='0.2.0',
     description='Monitoring software',
     long_description=long_description,
     url='https://github.com/utfsmlabs/tirith',
@@ -36,11 +36,10 @@ setup(
     ],
     keywords='monitoring',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    install_requires=['websockets', 'Flask', 'flask-socketio', 'socketIO-client'],
+    install_requires=['autobahn'],
     entry_points={
         'console_scripts': [
-            'tirs=tirith.server:main',
-            'tirc=tirith.client:main',
+            'tirith=tirith.client:main',
         ],
     },
 )
